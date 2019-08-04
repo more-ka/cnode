@@ -20,13 +20,13 @@
 
 <style scoped>
   .header{
-    height: 40px;
+    height: 50px;
     background: #444;
     padding: 5px 80px;
   }
   img{
     max-width: 120px;
-    margin: 4px 0;
+    margin: 3px 0;
   }
   ul{
     list-style: none;
@@ -35,10 +35,11 @@
   }
   li{
     display: inline-block;
-    padding: 10px 15px;
+    padding: 8px 15px;
   }
   a{
     text-decoration: none;
     color: #ccc;
+    font-size: 14px;
   }
 </style>

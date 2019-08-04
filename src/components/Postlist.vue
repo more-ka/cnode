@@ -12,7 +12,7 @@
               <span class="replyCount">{{post.reply_count}}</span>/{{post.visit_count}}
             </span>
             <p class="postTitle">{{post.title}}</p>
-            <span class="time">{{post.last_reply_at.match(/\d{4}-\d{2}-\d{2}/).join('')}}</span>
+            <span class="time">{{post.last_reply_at | formatData}}</span>
           </div>
         </li>
       </ul>
@@ -55,6 +55,7 @@
 <style scoped>
   .main {
     width: 100%;
+    min-height: calc(100vh - 50px);
   }
 
   .loadingImg {

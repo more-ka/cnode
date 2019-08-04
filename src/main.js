@@ -11,7 +11,7 @@ new Vue({
   components: {App},
   template: '<App/>'
 });
-Vue.filter('formatData', function (str) {
+Vue.filter('formatDate', function (str) {
   if (!str) return ''
   let date = new Date(str)
   let time = (new Date().getTime() - date.getTime()) / 1000

@@ -1,17 +1,17 @@
 <template>
-  <div>
+  <div class="main">
     <div v-if="isLoading" class="loading">
       <img src="../assets/loading.gif" alt="" class="loadingImg">
     </div>
-    <div class="postlist">
+    <div class="postlist" v-else>
       <ul>
         <li class="topBar">
-            <span>全部</span>
-            <span>精华</span>
-            <span>分享</span>
-            <span>问答</span>
-            <span>招聘</span>
-            <span>客户端测试</span>
+          <span class="active">全部</span>
+          <span>精华</span>
+          <span>分享</span>
+          <span>问答</span>
+          <span>招聘</span>
+          <span>客户端测试</span>
         </li>
         <li v-for="post in posts" class="item">
           <div class="content">
@@ -25,8 +25,13 @@
                 {{post | tabFormat}}
               </span>
             </span>
-            <p class="postTitle">{{post.title}}</p>
-            <span class="time">{{post.last_reply_at | formatData}}</span>
+            <router-link :to="{
+              name: 'postContent',
+              params: { id: post.id }
+                }">
+              <p class="postTitle">{{post.title}}</p>
+            </router-link>
+            <span class="time">{{post.last_reply_at | formatDate}}</span>
           </div>
         </li>
       </ul>
@@ -67,8 +72,13 @@
 </script>
 
 <style scoped>
+  .loading {
+    height: calc(100vh - 50px);
+    text-align: center;
+  }
+
   .loadingImg {
-    margin-top: 2%;
+    margin-top: 30%;
   }
 
   .postlist {
@@ -81,23 +91,27 @@
     border-bottom: 1px solid #E1E1E1;
     border-radius: 40px;
   }
-  .topBar{
+
+  .topBar {
     padding: 10px;
     list-style: none;
     background: #F6F6F6;
   }
-  .topBar span{
+
+  .topBar span {
     margin: 0 14px;
     color: #80bd01;
     font-size: 14px;
   }
-  .topBar span:first-child{
+
+  .topBar span.active {
     display: inline-block;
     background: #80bd01;
     color: white;
-    padding: 2px;
+    padding: 2px 4px;
     border-radius: 4px;
   }
+
   .item {
     list-style: none;
     border-bottom: 1px solid #9e9e9e5e;
@@ -142,25 +156,32 @@
   .putGood, .putTop {
     background: #80bd01;
   }
-  .putGood, .putTop span{
+
+  .putGood, .putTop span {
     color: white;
   }
+
   .topicTab {
     color: #999;
     background: lightgrey;
   }
-  #tab span{
+
+  #tab span {
     display: inline-block;
     font-size: 12px;
     padding: 0 4px;
     vertical-align: top;
   }
+
   .postTitle {
     display: inline-block;
     width: 70%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .postTitle:hover{
+    text-decoration: underline;
   }
 
   .time {

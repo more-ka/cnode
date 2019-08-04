@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header></Header>
-    <Postlist></Postlist>
+    <div class="main">
+      <Postlist></Postlist>
+    </div>
   </div>
 </template>
 
@@ -22,5 +24,9 @@ export default {
   }
   #app{
     background: #E1E1E1;
+  }
+  .main{
+    width:80%;
+    margin: 0 auto;
   }
 </style>

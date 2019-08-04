@@ -1,15 +1,29 @@
 <template>
-  <div class="main">
+  <div>
     <div v-if="isLoading" class="loading">
       <img src="../assets/loading.gif" alt="" class="loadingImg">
     </div>
     <div class="postlist">
       <ul>
+        <li class="topBar">
+            <span>全部</span>
+            <span>精华</span>
+            <span>分享</span>
+            <span>问答</span>
+            <span>招聘</span>
+            <span>客户端测试</span>
+        </li>
         <li v-for="post in posts" class="item">
           <div class="content">
             <img :src="post.author.avatar_url" alt="">
             <span class="count">
               <span class="replyCount">{{post.reply_count}}</span>/{{post.visit_count}}
+            </span>
+            <span :class="[{putGood:(post.good === true),putTop:(post.top === true),
+            topicTab:(post.good !== true && post.top !== true)}]" id="tab">
+              <span>
+                {{post | tabFormat}}
+              </span>
             </span>
             <p class="postTitle">{{post.title}}</p>
             <span class="time">{{post.last_reply_at | formatData}}</span>
@@ -53,22 +67,36 @@
 </script>
 
 <style scoped>
-  .main {
-    width: 100%;
-    min-height: calc(100vh - 50px);
-  }
-
   .loadingImg {
     margin-top: 2%;
   }
-  .postlist{
+
+  .postlist {
     margin-top: 24px;
     max-width: 1000px;
     margin-left: 80px;
   }
-  .postlist ul{
+
+  .postlist ul {
     border-bottom: 1px solid #E1E1E1;
     border-radius: 40px;
+  }
+  .topBar{
+    padding: 10px;
+    list-style: none;
+    background: #F6F6F6;
+  }
+  .topBar span{
+    margin: 0 14px;
+    color: #80bd01;
+    font-size: 14px;
+  }
+  .topBar span:first-child{
+    display: inline-block;
+    background: #80bd01;
+    color: white;
+    padding: 2px;
+    border-radius: 4px;
   }
   .item {
     list-style: none;
@@ -76,17 +104,20 @@
     background: #fff;
     padding: 10px;
   }
-  .item .content{
+
+  .item .content {
     line-height: 32px;
     height: 32px;
   }
-  .item img{
+
+  .item img {
     float: left;
     background-size: cover;
     width: 30px;
     height: 30px;
   }
-  .count{
+
+  .count {
     display: inline-block;
     font-size: 10px;
     color: #b4b4b4;
@@ -94,15 +125,45 @@
     height: 30px;
     line-height: 30px;
     text-align: center;
+    vertical-align: top;
   }
-  .count .replyCount{
+
+  .count .replyCount {
     color: #9e78c0;
     font-size: 14px;
   }
-  .postTitle{
-    display: inline-block;
+
+  #tab {
+    border-radius: 2px;
+    vertical-align: top;
+    height: 18px;
   }
-  .time{
+
+  .putGood, .putTop {
+    background: #80bd01;
+  }
+  .putGood, .putTop span{
+    color: white;
+  }
+  .topicTab {
+    color: #999;
+    background: lightgrey;
+  }
+  #tab span{
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 4px;
+    vertical-align: top;
+  }
+  .postTitle {
+    display: inline-block;
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .time {
     float: right;
     font-size: 10px;
     color: #b4b4b4;

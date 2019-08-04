@@ -33,4 +33,15 @@ Vue.filter('formatData', function (str) {
   } else if (timg / 31104000 < 12) {
     return parseInt((time / 3110400)) + '年前'
   }
+});
+Vue.filter('tabFormat',function (post) {
+  if(post.top === true){
+    return '置顶'
+  }else if(post.good === true){
+    return '精华'
+  }else if(post.tab=== 'ask'){
+    return '问答'
+  }else if(post.tab=== 'share'){
+    return '分享'
+  }
 })

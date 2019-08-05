@@ -82,7 +82,6 @@
   }
 
   .postlist {
-    margin-top: 24px;
     max-width: 1000px;
     margin-left: 80px;
   }
@@ -181,7 +180,7 @@
     text-overflow: ellipsis;
   }
   .postTitle:hover{
-    text-decoration: underline;
+    /*text-decoration: underline;*/
   }
 
   .time {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <div class="main">
+    <div id="main">
       <router-view name="main"></router-view>
     </div>
   </div>
@@ -24,8 +24,8 @@ export default {
   #app{
     background: #E1E1E1;
   }
-  .main{
+  #main{
     width:80%;
-    margin: 0 auto;
+    margin: 16px auto;
   }
 </style>

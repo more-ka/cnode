@@ -21,11 +21,16 @@ export default {
   *{
     margin: 0;padding: 0;box-sizing: border-box;
   }
+  .clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+  }
   #app{
     background: #E1E1E1;
   }
   #main{
     width:80%;
-    margin: 16px auto;
+    margin: 16px auto 0;
   }
 </style>

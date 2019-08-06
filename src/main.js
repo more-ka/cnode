@@ -25,7 +25,7 @@ Vue.filter('formatDate', function (str) {
     return parseInt((time / 60000)) + '分钟前'
   } else if (time / 3600000 < 24) {
     return parseInt((time / 360000)) + '小时前'
-  } else if (time / 86400000 < 30) {
+  } else if (time / 86400000 < 31) {
     return parseInt((time / 86400000)) + '天前'
   } else if (time / 2592000000 < 12) {
     return parseInt((time / 2592000000)) + '月前'

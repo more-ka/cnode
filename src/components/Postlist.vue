@@ -15,7 +15,11 @@
         </li>
         <li v-for="post in posts" class="item">
           <div class="content">
-            <img :src="post.author.avatar_url" alt="">
+            <router-link :to="{
+              name: 'user',
+              params:{user: post.author.loginname}}">
+              <img :src="post.author.avatar_url" alt="">
+            </router-link>
             <span class="count">
               <span class="replyCount">{{post.reply_count}}</span>/{{post.visit_count}}
             </span>
@@ -78,7 +82,7 @@
   }
 
   .loadingImg {
-    margin-top: 30%;
+    margin-top: 24%;
   }
 
   .postlist {
@@ -180,7 +184,7 @@
     text-overflow: ellipsis;
   }
   .postTitle:hover{
-    /*text-decoration: underline;*/
+    text-decoration: underline;
   }
 
   .time {

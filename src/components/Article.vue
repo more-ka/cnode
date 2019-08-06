@@ -9,7 +9,7 @@
           <span class="title">{{post.title}}</span>
           <ul class="info">
             <li>• 发布于 {{post.create_at | formatDate}}</li>
-            <!--<li>• 作者 {{post.author.loginname}}</li>-->
+            <li>• 作者 {{post.author.loginname}}</li>
             <li>• {{post.visit_count}} 次浏览</li>
             <li>• 来自 {{post | tabFormat}}</li>
           </ul>
@@ -20,10 +20,24 @@
         <div class="title">{{post.reply_count}} 回复</div>
         <div class="content" v-for="(reply,index) in post.replies">
           <div class="left">
+            <router-link :to="{
+              name: 'user',
+              params:{
+                user:reply.author.loginname
+              }
+            }">
               <img :src="reply.author.avatar_url" alt="">
+            </router-link>
           </div>
           <div class="right">
-            <p class="name">{{reply.author.loginname}}</p>
+            <router-link :to="{
+              name: 'user',
+              params:{
+                user:reply.author.loginname
+              }
+            }">
+              <p class="name">{{reply.author.loginname}}</p>
+            </router-link>
             <p class="index">{{index+1}}楼</p>
             <p class="time">• {{reply.create_at | formatDate}}</p>
             <p class="ups" v-if="reply.ups.length>0"> 点赞{{reply.ups.length}}</p>
@@ -74,7 +88,7 @@
   }
 
   .loadingImg {
-    margin-top: 30%;
+    margin-top: 24%;
   }
 
   .article {
@@ -115,9 +129,16 @@
     margin: 0 auto;
     padding: 24px;
   }
-
+  .topic_content ul,.topic_content ol{
+    padding: 0;
+    margin: 0 0 10px 25px;
+  }
+  .topic_content img{
+    max-width: 100%;
+  }
   .prettyprint {
     background: #F7F7F7;
+    white-space: pre-wrap;
   }
 
   .comment {
@@ -125,45 +146,57 @@
     margin-top: 1vh;
     background: white;
   }
-  .comment .content{
+
+  .comment .content {
     border-bottom: 1px solid lightgray;
     padding: 0.7em;
   }
+
   .comment > .title {
     background: #F6F6F6;
     padding: 10px;
   }
-  .comment .left{
+
+  .comment .left {
     display: inline-block;
     width: 4em;
     height: 4em;
     padding-bottom: 0.5em;
     vertical-align: top;
   }
+
   .comment .left img {
     display: inline-block;
     width: 2em;
     margin-left: 1em;
   }
-  .comment .right{
+
+  .comment .right {
     display: inline-block;
     width: 90%;
   }
-  .comment .right > p{
+
+  .comment .right > p {
     font-size: 0.7em;
     display: inline-block;
   }
-  .comment .right .name{
+
+  .comment .right .name {
+    font-size: 0.7em;
+    display: inline-block;
     font-weight: bold;
   }
-  .comment .right .index{
+
+  .comment .right .index {
     color: #1B95D1;
   }
-  .comment .right .text{
+
+  .comment .right .text {
     margin-top: 0.5em;
     margin-left: 1em;
   }
-  .comment .right .text p{
+
+  .comment .right .text p {
     line-height: 1.5em;
     height: 1.5em;
   }

@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-    <img src="../assets/cnodejs_light.svg" alt="">
+    <router-link :to="{name:'root'}">
+      <img src="../assets/cnodejs_light.svg" alt="">
+    </router-link>
     <ul>
       <li><a href="#">首页</a></li>
       <li><a href="#">新手入门</a></li>
@@ -19,25 +21,29 @@
 </script>
 
 <style scoped>
-  .header{
+  .header {
     height: 50px;
     background: #444;
     padding: 5px 80px;
   }
-  img{
+
+  img {
     max-width: 120px;
     margin: 3px 0;
   }
-  ul{
+
+  ul {
     list-style: none;
     float: right;
     text-align: center;
   }
-  li{
+
+  li {
     display: inline-block;
     padding: 8px 15px;
   }
-  a{
+
+  a {
     text-decoration: none;
     color: #ccc;
     font-size: 14px;

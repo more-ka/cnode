@@ -100,6 +100,7 @@
   .infoWrapper{
     padding-bottom: 10vh;
     line-height: 2em;
+    min-height: calc(100vh - 66px);
   }
   .title {
     padding: 0.5em;

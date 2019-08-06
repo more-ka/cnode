@@ -31,7 +31,7 @@
             </span>
             <router-link :to="{
               name: 'postContent',
-              params: { id: post.id }
+              params: { id: post.id,name: post.author.loginname }
                 }">
               <p class="postTitle">{{post.title}}</p>
             </router-link>
@@ -88,6 +88,7 @@
   .postlist {
     max-width: 1000px;
     margin-left: 80px;
+    padding-bottom: 10vh;
   }
 
   .postlist ul {

@@ -93,6 +93,8 @@
 
   .article {
     padding-bottom: 20vh;
+    width: 75%;
+    min-height: calc(100vh - 66px);
   }
 
   .article .topic {

@@ -11,37 +11,30 @@
         }">
           <img :src="post.avatar_url" alt="">
         </router-link>
-        <router-link :to="{
-          name: 'userInfo',
-          params:{
-            user:post.loginname
-          }
-        }">
-          <p class="name">{{post.loginname}}</p>
-        </router-link>
+        <p class="name">{{post.loginname}}</p>
         <p class="score">{{post.score}} 积分</p>
       </div>
     </div>
     <div class="recentTopic">
       <p class="topBar">作者最近创建的主题</p>
       <ul v-for="topics in setTopicCount">
-        <router-link :to="{
+          <router-link :to="{
               name: 'postContent',
               params:{id:topics.id}
             }">
-          <li class="topicTitle">{{topics.title}}</li>
-        </router-link>
+            <li class="topicTitle">{{topics.title}}</li>
+          </router-link>
       </ul>
     </div>
     <div class="recentReplies">
       <p class="topBar">作者最近回复的主题</p>
       <ul v-for="replies in setRepliesCount">
-        <router-link :to="{
+          <router-link :to="{
               name: 'postContent',
               params:{id:replies.id}
             }">
-          <li class="repliesTitle">{{replies.title}}</li>
-        </router-link>
+            <li class="repliesTitle">{{replies.title}}</li>
+          </router-link>
       </ul>
     </div>
   </div>
@@ -50,13 +43,13 @@
 <script>
   export default {
     name: "Sliderbar",
-    data() {
+    data(){
       return {
         post: {}
       }
     },
     methods: {
-      getUserInfo() {
+      getUserData() {
         this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
           .then(response => {
             this.post = response.data.data
@@ -66,24 +59,24 @@
           })
       }
     },
-    beforeMount() {
-      this.getUserInfo()
+    beforeMount(){
+      this.getUserData()
     },
-    computed: {
-      setTopicCount() {
-        if (this.post.recent_topics) {
-          return this.post.recent_topics.slice(0, 5)
+    computed:{
+      setTopicCount(){
+        if(this.post.recent_topics){
+          return this.post.recent_topics.slice(0,5)
         }
       },
-      setRepliesCount() {
-        if (this.post.recent_replies) {
-          return this.post.recent_replies.slice(0, 5)
+      setRepliesCount(){
+        if(this.post.recent_replies){
+          return this.post.recent_replies.slice(0,5)
         }
       }
     },
-    watch: {
-      '$route'(to, from) {
-        this.getUserInfo()
+    watch:{
+      '$route'(to,from){
+        this.getUserData()
       }
     }
   }
@@ -101,48 +94,40 @@
     background: #F6F6F6;
     padding: 0.7em;
   }
-
-  .info {
+  .info{
     padding: 0.5em;
     background: #ffffff;
   }
-
-  .authorInfo img {
+  .authorInfo img{
     display: inline-block;
     height: 4em;
     width: 4em;
   }
-
-  .info .name {
+  .info .name{
     display: inline-block;
     color: #778087;
     vertical-align: top;
     margin-left: 0.5em;
   }
-
-  .info .score {
+  .info .score{
     margin-top: 0.5em;
     font-size: 14px;
   }
-
-  .recentTopic, .recentReplies {
+  .recentTopic,.recentReplies{
     margin-top: 1em;
     background: #ffffff;
   }
-
-  ul {
-    padding: 0.5em;
+  ul{
+    padding:0.5em;
   }
-
-  ul a {
+  ul a{
     text-decoration: none;
     color: black;
   }
-
-  ul li {
+  ul li{
     list-style: none;
     overflow: hidden; /*自动隐藏文字*/
-    text-overflow: ellipsis; /*文字隐藏后添加省略号*/
-    white-space: nowrap; /*强制不换行*/
+    text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+    white-space: nowrap;/*强制不换行*/
   }
 </style>

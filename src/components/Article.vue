@@ -141,6 +141,7 @@
   .prettyprint {
     background: #F7F7F7;
     white-space: pre-wrap;
+    padding: 0 1em;
   }
 
   .comment {

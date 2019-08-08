@@ -77,7 +77,6 @@
       renderList(value){
         this.postPage = value
         this.getData()
-        this.reload()
       }
     },
     beforeMount() {

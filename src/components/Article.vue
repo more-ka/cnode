@@ -154,7 +154,9 @@
     border-bottom: 1px solid lightgray;
     padding: 0.7em;
   }
-
+  .comment .content img{
+    width:100%;
+  }
   .comment > .title {
     background: #F6F6F6;
     padding: 10px;

@@ -8,6 +8,7 @@ import Sliderbar from '../components/Sliderbar'
 Vue.use(Router)
 
 export default new Router({
+  base: '/hot/',
   routes: [
     {
       name: 'root',

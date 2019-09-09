@@ -74,6 +74,13 @@
     beforeMount() {
       this.isLoading = true
       this.getArticleData()
+    },
+    watch: {
+      $route(to, from) {
+        // 对路由变化作出响应...
+        this.isLoading = true;
+        this.getArticleData();
+      }
     }
   }
 </script>

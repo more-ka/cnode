@@ -3,16 +3,7 @@
     <div class="authorInfo">
       <p class="topBar">作者</p>
       <div class="info">
-        <router-link
-          :to="{
-          name: 'userInfo',
-          params:{
-            user:post.loginname
-          }
-        }"
-        >
           <img :src="post.avatar_url" alt />
-        </router-link>
         <p class="name">{{post.loginname}}</p>
         <p class="score">{{post.score}} 积分</p>
       </div>
